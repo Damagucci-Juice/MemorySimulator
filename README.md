@@ -1,2 +1,3 @@
-# MemorySimulator
-코드스쿼드미션중 메모리 구현
+# PhotosAlbum
+
+비동기를 이해하기 위해 시작한 사진을 보여주는 어플리케이션
