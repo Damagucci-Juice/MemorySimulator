@@ -99,11 +99,7 @@
 		009B0CE128B7630C00824A29 /* PhotosAlbum */ = {
 			isa = PBXGroup;
 			children = (
-				009B0CE228B7630C00824A29 /* AppDelegate.swift */,
-				009B0CE428B7630C00824A29 /* SceneDelegate.swift */,
-				009B0CE628B7630C00824A29 /* PhotosViewController.swift */,
-				009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */,
-				009B0D1728B8442A00824A29 /* Extensions+.swift */,
+				009B0D1928B85EC900824A29 /* Source */,
 				009B0CEB28B7630E00824A29 /* Assets.xcassets */,
 				009B0CF028B7630E00824A29 /* Info.plist */,
 			);
@@ -125,6 +121,34 @@
 				009B0D0528B7630E00824A29 /* PhotosAlbumUITestsLaunchTests.swift */,
 			);
 			path = PhotosAlbumUITests;
+			sourceTree = "<group>";
+		};
+		009B0D1928B85EC900824A29 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				009B0CE228B7630C00824A29 /* AppDelegate.swift */,
+				009B0CE428B7630C00824A29 /* SceneDelegate.swift */,
+				009B0D1B28B85EF400824A29 /* View */,
+				009B0D1A28B85EE300824A29 /* Support */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		009B0D1A28B85EE300824A29 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				009B0D1728B8442A00824A29 /* Extensions+.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		009B0D1B28B85EF400824A29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				009B0CE628B7630C00824A29 /* PhotosViewController.swift */,
+				009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
