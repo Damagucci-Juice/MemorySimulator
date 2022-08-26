@@ -28,13 +28,17 @@ class PhotosViewController: UIViewController {
         fatalError("coder has been implemented.")
     }
     
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViews()
         configureLayout()
         configureAttribute()
-        
+//        configureBinding()
         getPermissionIfNecessary { granted in
             guard granted else { return }
             self.photosDataSource.fetchAssets()
@@ -43,7 +47,16 @@ class PhotosViewController: UIViewController {
             }
         }
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        PHPhotoLibrary.shared().register(self)
+    }
+    
+//    private func configureBinding() {
+//
+//    }
+    
     private func configureLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,8 +74,10 @@ class PhotosViewController: UIViewController {
     
     private func configureAttribute() {
         //MARK: - CollectionView's Settings
-        collectionView.register(PhotoCollectionViewCell.self,
-                                forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier)
+        collectionView.register(
+            PhotoCollectionViewCell.self,
+            forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier
+        )
         collectionView.dataSource = self.photosDataSource
         collectionView.delegate = self.photosDelegate
         
@@ -91,4 +106,19 @@ extension PhotosViewController {
         }
     }
     
+}
+
+extension PhotosViewController: PHPhotoLibraryChangeObserver {
+
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let change = changeInstance.changeDetails(for: photosDataSource.allPhotos)
+              else { return }
+        let changedResult = change.fetchResultAfterChanges
+        photosDataSource.updateAssets(fetchResult: changedResult)
+        
+        DispatchQueue.main.sync { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+
 }

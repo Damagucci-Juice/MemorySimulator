@@ -10,8 +10,7 @@ import Photos
 
 final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    private var allPhotos = PHFetchResult<PHAsset>()
-    var onUpdateAssets: () -> Void = { }
+    private(set) var allPhotos = PHFetchResult<PHAsset>()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPhotos.count
@@ -47,18 +46,10 @@ final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource 
         
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
     }
-
+    
+    func updateAssets(fetchResult: PHFetchResult<PHAsset>) {
+        self.allPhotos = fetchResult
+    }
+    
 }
 
-//
-//extension PhotoCollectionViewDataSource: PHPhotoLibraryChangeObserver {
-//
-//    func photoLibraryDidChange(_ changeInstance: PHChange) {
-//        guard let change = changeInstance.changeDetails(for: allPhotos)
-//              else { return }
-//
-//        allPhotos = change.fetchResultAfterChanges
-//        self.onUpdateAssets()
-//    }
-//
-//}
