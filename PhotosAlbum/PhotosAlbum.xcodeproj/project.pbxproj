@@ -16,6 +16,8 @@
 		009B0D0628B7630E00824A29 /* PhotosAlbumUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0D0528B7630E00824A29 /* PhotosAlbumUITestsLaunchTests.swift */; };
 		009B0D1628B8440900824A29 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */; };
 		009B0D1828B8442A00824A29 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0D1728B8442A00824A29 /* Extensions+.swift */; };
+		00BF561A28B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */; };
+		00BF561C28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		009B0D0528B7630E00824A29 /* PhotosAlbumUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosAlbumUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		009B0D1728B8442A00824A29 /* Extensions+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+.swift"; sourceTree = "<group>"; };
+		00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				009B0CE628B7630C00824A29 /* PhotosViewController.swift */,
+				00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */,
+				00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */,
 				009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */,
 			);
 			path = View;
@@ -284,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00BF561C28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift in Sources */,
 				009B0CE728B7630C00824A29 /* PhotosViewController.swift in Sources */,
+				00BF561A28B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift in Sources */,
 				009B0D1628B8440900824A29 /* PhotoCollectionViewCell.swift in Sources */,
 				009B0D1828B8442A00824A29 /* Extensions+.swift in Sources */,
 				009B0CE328B7630C00824A29 /* AppDelegate.swift in Sources */,
