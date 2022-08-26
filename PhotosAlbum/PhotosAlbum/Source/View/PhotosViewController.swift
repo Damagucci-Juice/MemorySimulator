@@ -20,7 +20,6 @@ class PhotosViewController: UIViewController {
     let photosDataSource = PhotoCollectionViewDataSource()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        // 초기화 로직
         super.init(nibName: .none, bundle: .none)
     }
     
@@ -52,9 +51,21 @@ class PhotosViewController: UIViewController {
     }
     
     private func configureAttribute() {
+        //MARK: - CollectionView's Settings
         collectionView.register(PhotoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier)
         collectionView.dataSource = self.photosDataSource
         collectionView.delegate = self.photosDelegate
+        
+        //MARK: - NavigationController's Settings
+        self.navigationItem.title = "Photos"
+        self.navigationController?.view.backgroundColor = .white
+        let action = UIAction { _ in
+            print("Touched \"Done\" button")
+        }
+        let doneButton = UIBarButtonItem(
+            title: "Done", image: .none, primaryAction: action, menu: nil)
+        doneButton.style = .done
+        self.navigationItem.rightBarButtonItem = doneButton
     }
 }
