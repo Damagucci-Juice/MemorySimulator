@@ -8,8 +8,7 @@
 import UIKit
 
 private enum LayoutConstant {
-    static let spacing: CGFloat = 2
-    static let itemHeight: CGFloat = 80
+    static let spacing: CGFloat = 2.0
 }
 
 final class PhotoCollectionDelegateFlowLayout: NSObject, UICollectionViewDelegateFlowLayout {
@@ -19,15 +18,15 @@ final class PhotoCollectionDelegateFlowLayout: NSObject, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = itemWidth(for: UIScreen.main.bounds.width, spacing: LayoutConstant.spacing)
-        return CGSize(width: width, height: LayoutConstant.itemHeight)
+        return CGSize(width: width, height: width)
     }
     
     private func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
         let itemsInRow: CGFloat = 4
-        let totalSpacing:  CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
+        let totalSpacing:  CGFloat = (2 * spacing) + (itemsInRow - 1) * spacing
         let finalWidth = (width - totalSpacing) / itemsInRow
-        
-        return finalWidth - 5.0
+
+        return finalWidth - 5
     }
     
     

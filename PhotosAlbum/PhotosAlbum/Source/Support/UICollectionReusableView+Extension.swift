@@ -1,5 +1,5 @@
 //
-//  Extensions+.swift
+//  UICollectionReusableView+Extension.swift
 //  PhotosAlbum
 //
 //  Created by YEONGJIN JANG on 2022/08/26.

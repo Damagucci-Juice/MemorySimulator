@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotosViewController: UIViewController {
 
@@ -33,6 +34,14 @@ class PhotosViewController: UIViewController {
         configureViews()
         configureLayout()
         configureAttribute()
+        
+        getPermissionIfNecessary { granted in
+            guard granted else { return }
+            self.photosDataSource.fetchAssets()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+            }
+        }
     }
 
     private func configureLayout() {
@@ -68,4 +77,18 @@ class PhotosViewController: UIViewController {
         doneButton.style = .done
         self.navigationItem.rightBarButtonItem = doneButton
     }
+}
+
+extension PhotosViewController {
+    func getPermissionIfNecessary(completionHandler: @escaping (Bool) -> Void) {
+        
+        guard PHPhotoLibrary.authorizationStatus() != .authorized else {
+          completionHandler(true)
+          return
+        }
+        PHPhotoLibrary.requestAuthorization { status in
+          completionHandler(status == .authorized)
+        }
+    }
+    
 }
