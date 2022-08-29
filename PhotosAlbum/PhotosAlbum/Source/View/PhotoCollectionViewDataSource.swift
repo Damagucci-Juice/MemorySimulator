@@ -46,11 +46,13 @@ final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource 
         ]
         
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-        var assets: [PHAsset] = []
-        
-        for i in 0..<allPhotos.count {
-            assets.append(allPhotos[i])
-        }
+        let assets: [PHAsset] = {
+            var array: [PHAsset] = []
+            (0..<allPhotos.count).forEach { index in
+                array.append(allPhotos[index])
+            }
+            return array
+        }()
         
         cacheImageManager.startCachingImages(for: assets, targetSize: CGSize(width: 90, height: 90), contentMode: .aspectFit, options: .none)
     }
