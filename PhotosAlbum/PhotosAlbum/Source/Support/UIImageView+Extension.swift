@@ -21,14 +21,11 @@ extension UIImageView {
         completionHandler?(true)
       }
       
-      PHImageManager.default().requestImage(
+      PHCachingImageManager.default().requestImage(
         for: asset,
         targetSize: size,
         contentMode: contentMode,
         options: options,
         resultHandler: resultHandler)
-
-    
-//      completionHandler?(false)
     }
 }

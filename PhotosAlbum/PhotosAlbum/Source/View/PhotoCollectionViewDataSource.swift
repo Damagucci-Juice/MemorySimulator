@@ -11,6 +11,7 @@ import Photos
 final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     private(set) var allPhotos = PHFetchResult<PHAsset>()
+    private let cacheImageManager = PHCachingImageManager()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPhotos.count
@@ -35,7 +36,7 @@ final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource 
         }
         return cell
     }
-    
+
     func fetchAssets() {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [
@@ -45,6 +46,15 @@ final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource 
         ]
         
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+        let assets: [PHAsset] = {
+            var array: [PHAsset] = []
+            (0..<allPhotos.count).forEach { index in
+                array.append(allPhotos[index])
+            }
+            return array
+        }()
+        
+        cacheImageManager.startCachingImages(for: assets, targetSize: CGSize(width: 90, height: 90), contentMode: .aspectFit, options: .none)
     }
     
     func updateAssets(fetchResult: PHFetchResult<PHAsset>) {

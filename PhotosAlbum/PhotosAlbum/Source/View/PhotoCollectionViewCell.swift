@@ -28,4 +28,9 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
             photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImageView.image = .none
+    }
 }
