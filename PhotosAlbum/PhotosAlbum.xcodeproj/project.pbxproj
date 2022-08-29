@@ -19,6 +19,7 @@
 		009B0D1828B8442A00824A29 /* UICollectionReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0D1728B8442A00824A29 /* UICollectionReusableView+Extension.swift */; };
 		00BF561A28B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */; };
 		00BF561C28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */; };
+		00C2169B28BCA46F00A6F597 /* doodle.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C2169A28BCA46F00A6F597 /* doodle.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		009B0D1728B8442A00824A29 /* UICollectionReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Extension.swift"; sourceTree = "<group>"; };
 		00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionDelegateFlowLayout.swift; sourceTree = "<group>"; };
 		00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		00C2169A28BCA46F00A6F597 /* doodle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = doodle.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				009B0D1728B8442A00824A29 /* UICollectionReusableView+Extension.swift */,
+				00C2169A28BCA46F00A6F597 /* doodle.json */,
 				0049883E28B8ABDC00971912 /* UIImageView+Extension.swift */,
 			);
 			path = Support;
@@ -268,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C2169B28BCA46F00A6F597 /* doodle.json in Resources */,
 				009B0CEC28B7630E00824A29 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
