@@ -8,20 +8,18 @@
 import UIKit
 
 final class PhotoCollectionViewCell: UICollectionViewCell {
-    private let photoImageView: UIImageView = {
+    
+    let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
-    func setUpPhoto(color: UIColor) {
-        contentView.backgroundColor = color
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        addSubview(photoImageView)
-        
+        contentView.addSubview(photoImageView)
+
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -29,5 +27,10 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
             photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImageView.image = .none
     }
 }

@@ -6,23 +6,58 @@
 //
 
 import UIKit
+import Photos
 
 final class PhotoCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    
+    private(set) var allPhotos = PHFetchResult<PHAsset>()
+    private let cacheImageManager = PHCachingImageManager()
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let colorCount = 40
-        return colorCount
+        return allPhotos.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView
+                .dequeueReusableCell(
+                    withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier,
+                    for: indexPath
+                )
+                as? PhotoCollectionViewCell
+                
+        else { return UICollectionViewCell() }
         
-        var array: [CGFloat] = []
-        for _ in 0..<3 {
-            let randomFloat: CGFloat = CGFloat.random(in: 0...1)
-            array.append(randomFloat)
+        let photoAsset: PHAsset = allPhotos[indexPath.row]
+        
+        //TODO: - 실패하면 색을 만드는 팩토리 메서드 패턴으로 색을 주입
+        cell.photoImageView.fetchImageAsset(photoAsset, targetSize: cell.bounds.size) { success in
+            
         }
-        let randomColor = UIColor(red: array[0], green: array[1], blue: array[2], alpha: 1)
-        cell.setUpPhoto(color: randomColor)
         return cell
     }
+
+    func fetchAssets() {
+        let allPhotosOptions = PHFetchOptions()
+        allPhotosOptions.sortDescriptors = [
+          NSSortDescriptor(
+            key: "creationDate",
+            ascending: false)
+        ]
+        
+        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+        var assets: [PHAsset] = []
+        
+        for i in 0..<allPhotos.count {
+            assets.append(allPhotos[i])
+        }
+        
+        cacheImageManager.startCachingImages(for: assets, targetSize: CGSize(width: 90, height: 90), contentMode: .aspectFit, options: .none)
+    }
+    
+    func updateAssets(fetchResult: PHFetchResult<PHAsset>) {
+        self.allPhotos = fetchResult
+    }
+    
 }
+
