@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum LayoutConstant {
+enum LayoutConstant {
     static let spacing: CGFloat = 2.0
 }
 
@@ -28,6 +28,5 @@ final class PhotoCollectionDelegateFlowLayout: NSObject, UICollectionViewDelegat
 
         return finalWidth - 5
     }
-    
     
 }
