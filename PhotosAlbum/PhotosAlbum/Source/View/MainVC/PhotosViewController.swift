@@ -11,9 +11,8 @@ import Photos
 class PhotosViewController: UIViewController {
 
     private let collectionView: UICollectionView = {
-        let configuration = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: configuration)
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
     
@@ -34,11 +33,16 @@ class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureViews()
+        self.view.addSubview(collectionView)
+
         configureLayout()
         configureAttribute()
-//        configureBinding()
+        configureNavigation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        PHPhotoLibrary.shared().register(self)
         getPermissionIfNecessary { granted in
             guard granted else { return }
             self.photosDataSource.fetchAssets()
@@ -47,15 +51,6 @@ class PhotosViewController: UIViewController {
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        PHPhotoLibrary.shared().register(self)
-    }
-    
-//    private func configureBinding() {
-//
-//    }
     
     private func configureLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,10 +63,6 @@ class PhotosViewController: UIViewController {
         ])
     }
     
-    private func configureViews() {
-        self.view.addSubview(collectionView)
-    }
-    
     private func configureAttribute() {
         //MARK: - CollectionView's Settings
         collectionView.register(
@@ -80,17 +71,31 @@ class PhotosViewController: UIViewController {
         )
         collectionView.dataSource = self.photosDataSource
         collectionView.delegate = self.photosDelegate
-        
+    }
+}
+
+extension PhotosViewController {
+    private func configureNavigation() {
         //MARK: - NavigationController's Settings
         self.navigationItem.title = "Photos"
         self.navigationController?.view.backgroundColor = .white
-        let action = UIAction { _ in
+        
+        let doneAction = UIAction { _ in
             print("Touched \"Done\" button")
         }
-        let doneButton = UIBarButtonItem(
-            title: "Done", image: .none, primaryAction: action, menu: nil)
+        
+        let modalAction = UIAction { _ in
+            let layout = UICollectionViewFlowLayout()
+            let vc = DoodleViewController(collectionViewLayout: layout)
+            self.navigationController?.pushViewController(vc, animated: true)
+//            self.navigationController?.present(vc, animated: true, completion: nil)
+        }
+        
+        let doneButton = UIBarButtonItem(title: "Done", image: .none, primaryAction: doneAction, menu: nil)
         doneButton.style = .done
+        let addButton = UIBarButtonItem(title: nil, image: .add, primaryAction: modalAction, menu: nil)
         self.navigationItem.rightBarButtonItem = doneButton
+        self.navigationItem.leftBarButtonItem = addButton
     }
 }
 

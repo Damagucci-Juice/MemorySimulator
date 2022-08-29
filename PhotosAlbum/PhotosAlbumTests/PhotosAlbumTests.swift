@@ -10,24 +10,41 @@ import XCTest
 
 class PhotosAlbumTests: XCTestCase {
 
+    var repository: DoodleImageRepository?
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        self.repository = DoodleImageRepositoryImplement()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.repository = nil
+        try super.tearDownWithError() 
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testJsonData() throws {
+        let array = repository?.convertDataToJson()
+        guard let count = array?.count else { return }
+        // The number of element in Doodle.json equal to 103
+        XCTAssertEqual(count, 103)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testAsyncImage() throws {
+        let doodleUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmETnjE9_LGsbWjeNCwlRJ4Ox1ioqxEVtWd7Z4QCKHtI7PewxvEg"
+  
+        let expectation = self.expectation(description: "fetchImage")
+        var fetchedImage: UIImage?
+        
+        repository?.loadAnImage(url: doodleUrl, completion: { result in
+            fetchedImage = result
+            
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssertNotNil(fetchedImage)
+        
     }
-
+    
+    
 }

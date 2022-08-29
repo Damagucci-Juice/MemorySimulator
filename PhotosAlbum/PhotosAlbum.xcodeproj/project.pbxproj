@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0049883D28B893E800971912 /* PhotosAlbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0CF928B7630E00824A29 /* PhotosAlbumTests.swift */; };
+		0036B2F828BCD7AE00EACC87 /* PhotosAlbumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0CF928B7630E00824A29 /* PhotosAlbumTests.swift */; };
+		0036B2FC28BCDB5000EACC87 /* DoodleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036B2FB28BCDB5000EACC87 /* DoodleDTO.swift */; };
+		0036B30228BCDFA500EACC87 /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036B30128BCDFA500EACC87 /* DoodleViewController.swift */; };
+		0036B30428BCE19000EACC87 /* DoodleCollectionDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036B30328BCE19000EACC87 /* DoodleCollectionDelegateFlowLayout.swift */; };
+		0036B30628BCEAC100EACC87 /* DoodleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036B30528BCEAC100EACC87 /* DoodleDataSource.swift */; };
 		0049883F28B8ABDC00971912 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049883E28B8ABDC00971912 /* UIImageView+Extension.swift */; };
 		009B0CE328B7630C00824A29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0CE228B7630C00824A29 /* AppDelegate.swift */; };
 		009B0CE528B7630C00824A29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B0CE428B7630C00824A29 /* SceneDelegate.swift */; };
@@ -20,6 +24,7 @@
 		00BF561A28B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */; };
 		00BF561C28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */; };
 		00C2169B28BCA46F00A6F597 /* doodle.json in Resources */ = {isa = PBXBuildFile; fileRef = 00C2169A28BCA46F00A6F597 /* doodle.json */; };
+		00C2169D28BCA58500A6F597 /* DoodleImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2169C28BCA58400A6F597 /* DoodleImageRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0036B2FB28BCDB5000EACC87 /* DoodleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleDTO.swift; sourceTree = "<group>"; };
+		0036B30128BCDFA500EACC87 /* DoodleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
+		0036B30328BCE19000EACC87 /* DoodleCollectionDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleCollectionDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		0036B30528BCEAC100EACC87 /* DoodleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleDataSource.swift; sourceTree = "<group>"; };
 		0049883E28B8ABDC00971912 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		009B0CDF28B7630C00824A29 /* PhotosAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009B0CE228B7630C00824A29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionDelegateFlowLayout.swift; sourceTree = "<group>"; };
 		00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		00C2169A28BCA46F00A6F597 /* doodle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = doodle.json; sourceTree = "<group>"; };
+		00C2169C28BCA58400A6F597 /* DoodleImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleImageRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +94,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0036B2FA28BCDB2D00EACC87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0036B2FB28BCDB5000EACC87 /* DoodleDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0036B2FD28BCDF4000EACC87 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				009B0CE628B7630C00824A29 /* PhotosViewController.swift */,
+				00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */,
+				00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		0036B2FE28BCDF6100EACC87 /* DoodleVC */ = {
+			isa = PBXGroup;
+			children = (
+				0036B30128BCDFA500EACC87 /* DoodleViewController.swift */,
+				0036B30328BCE19000EACC87 /* DoodleCollectionDelegateFlowLayout.swift */,
+				0036B30528BCEAC100EACC87 /* DoodleDataSource.swift */,
+			);
+			path = DoodleVC;
+			sourceTree = "<group>";
+		};
 		009B0CD628B7630C00824A29 = {
 			isa = PBXGroup;
 			children = (
+				00C2169A28BCA46F00A6F597 /* doodle.json */,
 				009B0CE128B7630C00824A29 /* PhotosAlbum */,
 				009B0CF828B7630E00824A29 /* PhotosAlbumTests */,
 				009B0D0228B7630E00824A29 /* PhotosAlbumUITests */,
@@ -136,6 +175,8 @@
 			children = (
 				009B0CE228B7630C00824A29 /* AppDelegate.swift */,
 				009B0CE428B7630C00824A29 /* SceneDelegate.swift */,
+				00C2169C28BCA58400A6F597 /* DoodleImageRepository.swift */,
+				0036B2FA28BCDB2D00EACC87 /* Model */,
 				009B0D1B28B85EF400824A29 /* View */,
 				009B0D1A28B85EE300824A29 /* Support */,
 			);
@@ -146,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				009B0D1728B8442A00824A29 /* UICollectionReusableView+Extension.swift */,
-				00C2169A28BCA46F00A6F597 /* doodle.json */,
 				0049883E28B8ABDC00971912 /* UIImageView+Extension.swift */,
 			);
 			path = Support;
@@ -155,9 +195,8 @@
 		009B0D1B28B85EF400824A29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				009B0CE628B7630C00824A29 /* PhotosViewController.swift */,
-				00BF561928B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift */,
-				00BF561B28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift */,
+				0036B2FE28BCDF6100EACC87 /* DoodleVC */,
+				0036B2FD28BCDF4000EACC87 /* MainVC */,
 				009B0D1528B8440900824A29 /* PhotoCollectionViewCell.swift */,
 			);
 			path = View;
@@ -299,9 +338,14 @@
 			files = (
 				0049883F28B8ABDC00971912 /* UIImageView+Extension.swift in Sources */,
 				00BF561C28B8624F006C1A3A /* PhotoCollectionViewDataSource.swift in Sources */,
+				0036B2FC28BCDB5000EACC87 /* DoodleDTO.swift in Sources */,
 				009B0CE728B7630C00824A29 /* PhotosViewController.swift in Sources */,
+				0036B30628BCEAC100EACC87 /* DoodleDataSource.swift in Sources */,
 				00BF561A28B86043006C1A3A /* PhotoCollectionDelegateFlowLayout.swift in Sources */,
+				00C2169D28BCA58500A6F597 /* DoodleImageRepository.swift in Sources */,
 				009B0D1628B8440900824A29 /* PhotoCollectionViewCell.swift in Sources */,
+				0036B30428BCE19000EACC87 /* DoodleCollectionDelegateFlowLayout.swift in Sources */,
+				0036B30228BCDFA500EACC87 /* DoodleViewController.swift in Sources */,
 				009B0D1828B8442A00824A29 /* UICollectionReusableView+Extension.swift in Sources */,
 				009B0CE328B7630C00824A29 /* AppDelegate.swift in Sources */,
 				009B0CE528B7630C00824A29 /* SceneDelegate.swift in Sources */,
@@ -312,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0036B2F828BCD7AE00EACC87 /* PhotosAlbumTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +366,6 @@
 			files = (
 				009B0D0428B7630E00824A29 /* PhotosAlbumUITests.swift in Sources */,
 				009B0D0628B7630E00824A29 /* PhotosAlbumUITestsLaunchTests.swift in Sources */,
-				0049883D28B893E800971912 /* PhotosAlbumTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
