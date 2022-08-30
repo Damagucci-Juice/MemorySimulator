@@ -55,12 +55,11 @@ class DoodleViewController: UICollectionViewController {
     }
     
     private func configureNavigationItems() {
-        let backButton = UIBarButtonItem(image: .strokedCheckmark, style: .plain, target: self, action: #selector(dismissPresentVC))
-        self.navigationController?.navigationItem.leftBarButtonItem = backButton
-        self.navigationController?.title = "Doodles"
-    }
-    
-    @objc func dismissPresentVC() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        let closeButton = UIBarButtonItem(title: "close", image: nil, primaryAction: UIAction(handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }), menu: nil)
+        self.navigationItem.rightBarButtonItem = closeButton
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.title = "Doodles"
     }
 }

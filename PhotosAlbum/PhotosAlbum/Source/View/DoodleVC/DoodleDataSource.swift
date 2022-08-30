@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Photos
 
 class DoodleDataSource: NSObject, UICollectionViewDataSource {
     
-    let imageRepository: DoodleImageRepository
-    let images: [Image]
+    private let imageRepository: DoodleImageRepository
+    private let images: [Image]
+    private var phAssets: [PHAsset] = []
     
     init(repo: DoodleImageRepository) {
         self.imageRepository = repo
@@ -26,10 +28,8 @@ class DoodleDataSource: NSObject, UICollectionViewDataSource {
                 as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         let imageString = images[indexPath.row].image
         
-        
         self.imageRepository.loadAnImage(url: imageString) { img in
             DispatchQueue.main.async {
-                
                 cell.photoImageView.image = img
             }
         }
