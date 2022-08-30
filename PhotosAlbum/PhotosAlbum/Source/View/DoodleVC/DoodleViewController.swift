@@ -32,6 +32,7 @@ class DoodleViewController: UICollectionViewController {
         configureNavigationItems()
         configureAttribute()
         configureLayout()
+        configrueBinding()
     }
     
     private func configureAttribute() {
@@ -40,6 +41,12 @@ class DoodleViewController: UICollectionViewController {
         collectionView.dataSource = self.dataSource
 
         self.collectionView.backgroundColor = UIColor.systemGray4
+    }
+    
+    private func configrueBinding() {
+        self.delegate.onUpdateTouchedSave = { [unowned self] index in
+            self.dataSource.saveImageToAlbums(index: index)
+        }
     }
     
     private func configureLayout() {

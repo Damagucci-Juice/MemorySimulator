@@ -36,4 +36,12 @@ class DoodleDataSource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func saveImageToAlbums(index: Int) {
+        imageRepository.loadAnImage(url: images[index].image) { image in
+            if let image = image {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            }
+        }
+    }
 }
