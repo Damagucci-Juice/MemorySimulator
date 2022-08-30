@@ -27,6 +27,5 @@ extension UIImageView {
         contentMode: contentMode,
         options: options,
         resultHandler: resultHandler)
-
     }
 }
