@@ -12,7 +12,6 @@ class DoodleDataSource: NSObject, UICollectionViewDataSource {
     
     private let imageRepository: DoodleImageRepository
     private let images: [Image]
-    private var phAssets: [PHAsset] = []
     
     init(repo: DoodleImageRepository) {
         self.imageRepository = repo
@@ -26,6 +25,7 @@ class DoodleDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath)
                 as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+        
         let imageString = images[indexPath.row].image
         
         self.imageRepository.loadAnImage(url: imageString) { img in

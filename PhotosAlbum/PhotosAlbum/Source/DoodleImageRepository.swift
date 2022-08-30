@@ -15,6 +15,8 @@ protocol DoodleImageRepository {
 
 final class DoodleImageRepositoryImplement: DoodleImageRepository {
     
+    private let cache = ImageCache()
+    
     func convertDataToJson() -> Array<Image> {
         
         if let path = Bundle.main.path(forResource: "doodle", ofType: "json") {
@@ -33,33 +35,38 @@ final class DoodleImageRepositoryImplement: DoodleImageRepository {
         }
         fatalError("failed to find path")
     }
-    
+
     func loadAnImage(url: String, completion: @escaping (UIImage?) -> Void) {
-        
+
         let defaultSession = URLSession(configuration: .default)
         var dataTask: URLSessionDataTask?
         let queue = DispatchQueue.global(qos: .background)
-        
+
         dataTask?.cancel()
         guard let urlComponents = URLComponents(string: url) else { fatalError() }
         guard let url = urlComponents.url else { fatalError() }
+
+        if let image = cache[url] {
+            return completion(image)
+        }
         
         dataTask = defaultSession.dataTask(with: url) { data, response, error in
-            
+
             defer {
                 dataTask = nil
             }
-            
+
             guard let data = data, error == nil,
                   let response = response as? HTTPURLResponse,
                   response.statusCode == 200
             else { return completion(nil) }
-            
-            let uiImage = UIImage(data: data)
-            queue.async {
-                completion(uiImage)
-            }
 
+            if let uiImage = UIImage(data: data) {
+                queue.async {
+                    completion(uiImage)
+                }
+                self.cache[url] = uiImage
+            }
         }
         dataTask?.resume()
     }
